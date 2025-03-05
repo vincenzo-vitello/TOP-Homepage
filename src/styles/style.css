@@ -1,7 +1,70 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
-  margin: 0;
-  padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@font-face {
+  font-family: "Ortland";
+  src: url("../assets/ortland.otf") format("truetype");
 }
+:root {
+  --orange: #FB5A38;
+  --dark-grey: #393E40;
+  --light-grey: #B2B0AF;
+  --white: #fbebe8;
+  --urbanist: 'Urbanist', sans-serif;
+  --ortland: "Ortland", sans-serif;
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: var(--urbanist);
+  background-color: var(--orange);
+}
+h2 {
+  font-family: var(--ortland)
+}
+main {
+  background-color: var(--dark-grey);
+  margin: 20px;
+  border-radius: 20px;
+  padding: 20px;
+}
+.greetings {
+  font-family: var(--urbanist);
+  font-size: 3rem;
+  text-align: end;
+  color: var(--white);
+  ;
+}
+.fullname {
+  display: inline-block;
+}
+.distorted-letter {
+  display: inline-block;
+}
+.fullname span{
+  text-transform: uppercase;
+  cursor: default;
+}
+.fullname .name{
+  font-family: var(--ortland);
+  font-size: 6rem;
+  color: transparent;
+  -webkit-text-stroke: 5px var(--orange);
+}
+.fullname .surname{
+  font-family: var(--ortland);
+  font-size: 6rem;
+  color: var(--orange);
+}
+.hero-image {
+  max-width: 40%;
+  max-height: 80vh;
+  border-radius: 20px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
