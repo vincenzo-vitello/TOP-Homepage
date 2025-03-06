@@ -3,45 +3,38 @@
 import gsap from 'gsap';
 
 export default function animateName() {
-  function splitLetters(element) {
-    const text = element.innerText;
-    const splitText = text.split('').map((char) => `<span class="distorted-letter">${char}</span>`).join('');
-    element.innerHTML = splitText;
-  }
+  function wrapLetters(element) {
+    const text = element.textContent.trim();
+    element.innerHTML = '';
 
-  document.querySelectorAll('.name, .surname').forEach((element) => {
-    splitLetters(element);
-  });
+    text.split('').forEach((letter) => {
+      const span = document.createElement('span');
+      span.textContent = letter;
+      span.classList.add('letter');
+      span.style.display = 'inline-block';
+      span.addEventListener('mouseenter', () => {
+        gsap.to(span, {
+          scaleY: 1.5,
+          y: -10,
+          duration: 0.2,
+          ease: 'power2.out',
+        });
+      });
 
-  const nameDistortedLetters = document.querySelectorAll('.name .distorted-letter');
-  const surnameDistortedLetters = document.querySelectorAll('.surname .distorted-letter');
+      span.addEventListener('mouseleave', () => {
+        gsap.to(span, {
+          scaleY: 1,
+          y: 0,
+          duration: 0.2,
+        });
+      });
 
-  function animateLetters(letters) {
-    const randomLetterIndex = Math.floor(Math.random() * letters.length);
-    const randomScaleX = Math.random() * (1.5 - 0.8) + 0.8;
-    const randomScaleY = Math.random() * (1.5 - 0.8) + 0.8;
-
-    gsap.to(letters[randomLetterIndex], {
-      scaleX: randomScaleX,
-      scaleY: randomScaleY,
-      duration: 0.2,
-      ease: 'power2.out',
+      element.appendChild(span);
     });
   }
+  const nameElement = document.querySelector('.name');
+  const surnameElement = document.querySelector('.surname');
 
-  document.querySelector('.name').addEventListener('mouseenter', () => {
-    nameDistortedLetters.forEach(() => animateLetters(nameDistortedLetters));
-  });
-
-  document.querySelector('.surname').addEventListener('mouseenter', () => {
-    surnameDistortedLetters.forEach(() => animateLetters(surnameDistortedLetters));
-  });
-
-  document.querySelector('.name').addEventListener('mouseleave', () => {
-    gsap.to(nameDistortedLetters, { scaleX: 1, scaleY: 1, duration: 0.2 });
-  });
-
-  document.querySelector('.surname').addEventListener('mouseleave', () => {
-    gsap.to(surnameDistortedLetters, { scaleX: 1, scaleY: 1, duration: 0.2 });
-  });
+  wrapLetters(nameElement);
+  wrapLetters(surnameElement);
 }

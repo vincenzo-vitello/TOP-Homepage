@@ -21,8 +21,8 @@ export default function animateProjectLink() {
         y: -10,
         duration: 1,
         ease: 'power1.inOut',
-        repeat: -1, // Ripete l'animazione in loop
-        yoyo: true, // Fa oscillare su e giù
+        repeat: -1,
+        yoyo: true,
       });
     });
 

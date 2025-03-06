@@ -18,8 +18,8 @@ export default function animateCursor() {
 
       gsap.set('.cursor', {
         css: {
-          left: posX - 1,
-          top: posY - 2,
+          left: posX + 5,
+          top: posY + 5,
         },
       });
     },
