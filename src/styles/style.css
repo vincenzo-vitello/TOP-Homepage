@@ -3,6 +3,14 @@
   font-family: "Ortland";
   src: url("../assets/ortland.otf") format("truetype");
 }
+@font-face {
+  font-family: "Manolo Mono";
+  src: url("../assets/manolo-mono.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Wosker";
+  src: url("../assets/wosker.otf") format("truetype");
+}
 :root {
   --orange: #FB5A38;
   --dark-grey: #393E40;
@@ -10,6 +18,8 @@
   --white: #fbebe8;
   --urbanist: 'Urbanist', sans-serif;
   --ortland: "Ortland", sans-serif;
+  --manolo-mono: "Manolo Mono", sans-serif;
+  --wosker: "Wosker", sans-serif;
 }
 * {
   box-sizing: border-box;
@@ -20,9 +30,22 @@ body {
   font-family: var(--urbanist);
   background-color: var(--orange);
 }
-h2 {
-  font-family: var(--ortland)
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--orange);
+  border: 2px solid var(--dark-grey);
+  z-index: 999;
 }
+*::selection {
+  background-color: var(--orange); /* Arancione intenso */
+  color: white;
+}
+/* Header */
 main {
   background-color: var(--dark-grey);
   margin: 20px;
@@ -41,20 +64,19 @@ main {
 }
 .distorted-letter {
   display: inline-block;
+
 }
-.fullname span{
-  text-transform: uppercase;
+.fullname {
+  font-family: var(--wosker);
+  font-size: 15rem;
   cursor: default;
 }
+
 .fullname .name{
-  font-family: var(--ortland);
-  font-size: 6rem;
   color: transparent;
-  -webkit-text-stroke: 5px var(--orange);
+  -webkit-text-stroke: 2.5px var(--orange); 
 }
 .fullname .surname{
-  font-family: var(--ortland);
-  font-size: 6rem;
   color: var(--orange);
 }
 .hero-image {
@@ -65,6 +87,28 @@ main {
 header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
 }
 
+/* Navbar */
+
+nav {
+  background-color: var(--dark-grey);
+  margin: 0 20px;
+  padding: 20px;
+  border-radius: 0 0 20px 20px;
+}
+nav ul {
+  margin: auto;
+  display: flex;
+  list-style-type: none;
+  width: 50%;
+  justify-content: space-around;
+  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+nav ul li {
+  cursor: pointer;
+}
