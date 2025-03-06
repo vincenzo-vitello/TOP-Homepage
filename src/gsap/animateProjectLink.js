@@ -15,6 +15,15 @@ export default function animateProjectLink() {
           ease: 'power2.out',
         });
       }
+      const projectImage = link.querySelector('.project-image');
+      projectImage.classList.add('visible');
+      gsap.to(projectImage, {
+        y: -10,
+        duration: 1,
+        ease: 'power1.inOut',
+        repeat: -1, // Ripete l'animazione in loop
+        yoyo: true, // Fa oscillare su e giù
+      });
     });
 
     link.addEventListener('mouseleave', () => {
@@ -24,10 +33,18 @@ export default function animateProjectLink() {
         gsap.to(lastLetterSpan, {
           scaleX: 1,
           x: 0,
-          duration: 0.2,
+          duration: 0.5,
           ease: 'power2.out',
         });
       }
+      const projectImage = link.querySelector('.project-image');
+      projectImage.classList.remove('visible');
+
+      gsap.killTweensOf(projectImage);
+      gsap.to(projectImage, {
+        y: 0,
+        duration: 1,
+      });
     });
   });
 }

@@ -138,6 +138,7 @@ nav ul li {
   border-bottom: 2px solid var(--orange);
   padding: 20px;
   z-index: 5;
+  position: relative;
 }
 .projects .project-card:last-of-type {
   border-bottom: none;
@@ -153,6 +154,24 @@ nav ul li {
 .animate-link {
   display: inline-block; 
 }
+.project-image {
+  position: absolute;
+  top: -25%;
+  right: 5px;
+  max-width: 400px;
+  height: auto;
+  z-index: 5;
+  display: none;
+  opacity: .9;
+  border-radius: 10px;
+}
+.project-image.effictio{
+  transform: translateX(-50px);
+}
+.visible {
+  display: block
+}
+
 @media screen and (min-width: 740px) {
   .fullname {
     font-size: 8rem;
