@@ -39,7 +39,7 @@ body {
   border-radius: 50%;
   background-color: var(--orange);
   border: 2px solid var(--dark-grey);
-  z-index: 999;
+  z-index: 3;
 }
 *::selection {
   background-color: var(--orange); /* Arancione intenso */
@@ -47,10 +47,7 @@ body {
 }
 /* Header */
 main {
-  background-color: var(--dark-grey);
   margin: 20px;
-  border-radius: 20px;
-  padding: 20px;
 }
 .greetings {
   font-family: var(--urbanist);
@@ -88,6 +85,9 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  background-color: var(--dark-grey);
+  border-radius: 20px;
+  padding: 20px;
 }
 
 /* Navbar */
@@ -95,15 +95,16 @@ header {
 nav {
   background-color: var(--dark-grey);
   margin: 0 20px;
-  padding: 20px;
   border-radius: 0 0 20px 20px;
+  
 }
 nav ul {
-  margin: auto;
   display: flex;
   list-style-type: none;
+  margin: auto;
   width: 50%;
   justify-content: space-around;
+  align-items: center;
   color: var(--white);
   font-size: 1.1rem;
   font-weight: 700;
@@ -111,4 +112,49 @@ nav ul {
 }
 nav ul li {
   cursor: pointer;
+  z-index: 4;
+  padding: 20px;
+}
+
+/* projects */
+
+.projects {
+  margin-top: 20px;
+  height: 40vh;
+  border-radius: 20px;
+  background-color: var(--dark-grey);
+}
+
+.projects {
+  margin-top: 20px;
+  border-radius: 20px;
+  background-color: var(--dark-grey);
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  min-height: fit-content;
+}
+.projects .project-card {
+  border-bottom: 2px solid var(--orange);
+  padding: 20px;
+  z-index: 5;
+}
+.projects .project-card:last-of-type {
+  border-bottom: none;
+}
+
+.projects h3 a{
+  color: var(--orange);
+  font-family: var(--wosker);
+  font-weight: normal;
+  font-size: 6rem;
+  text-decoration: none;
+}
+.animate-link {
+  display: inline-block; 
+}
+@media screen and (min-width: 740px) {
+  .fullname {
+    font-size: 8rem;
+  }
 }
