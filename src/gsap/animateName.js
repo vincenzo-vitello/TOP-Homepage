@@ -14,6 +14,7 @@ export default function animateName() {
       span.style.display = 'inline-block';
       span.addEventListener('mouseenter', () => {
         gsap.to(span, {
+          color: 'var(--accent)',
           scaleY: 1.5,
           y: -10,
           duration: 0.2,
@@ -23,6 +24,7 @@ export default function animateName() {
 
       span.addEventListener('mouseleave', () => {
         gsap.to(span, {
+          color: 'var(--dark-blue)',
           scaleY: 1,
           y: 0,
           duration: 0.2,

@@ -20,7 +20,9 @@ export default function animateNavElements() {
 
     menuItem.addEventListener('mouseenter', () => {
       gsap.to(letters, {
-        color: 'var(--orange)',
+        color: 'var(--accent)',
+        scaleX: 0.8,
+        scaleY: 0.8,
         duration: 0.3,
         stagger: 0.02,
         ease: 'power1.out',
@@ -28,7 +30,9 @@ export default function animateNavElements() {
 
       menuItem.addEventListener('mouseleave', () => {
         gsap.to(letters, {
-          color: 'var(--white)',
+          color: 'var(--base)',
+          scaleX: 1,
+          scaleY: 1,
           duration: 0.3,
           stagger: 0.02,
           ease: 'power1.out',

@@ -1,25 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
 @font-face {
   font-family: "Ortland";
   src: url("../assets/ortland.otf") format("truetype");
 }
-@font-face {
-  font-family: "Manolo Mono";
-  src: url("../assets/manolo-mono.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Wosker";
-  src: url("../assets/wosker.otf") format("truetype");
-}
 :root {
-  --orange: #FB5A38;
-  --dark-grey: #393E40;
-  --light-grey: #B2B0AF;
-  --white: #fbebe8;
+  --base: #C1C1C1;
+  --dark-blue: #2C4251;
+  --accent: #D16666;
   --urbanist: 'Urbanist', sans-serif;
   --ortland: "Ortland", sans-serif;
-  --manolo-mono: "Manolo Mono", sans-serif;
-  --wosker: "Wosker", sans-serif;
 }
 * {
   box-sizing: border-box;
@@ -28,86 +18,72 @@
 }
 body {
   font-family: var(--urbanist);
-  background-color: var(--orange);
+  background-color: var(--base);
 }
 .cursor {
   position: fixed;
   top: 0;
   left: 0;
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
-  background-color: var(--orange);
-  border: 2px solid var(--dark-grey);
+  background-color: var(--accent);
+  border: 2px solid var(--dark-blue);
   z-index: 3;
 }
 *::selection {
-  background-color: var(--orange); /* Arancione intenso */
+  background-color: var(--accent);
   color: white;
 }
 /* Header */
 main {
-  margin: 20px;
+  margin: 10px;
+}
+header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  background-color: var(--dark-blue);
+  background-image: url('../assets/images/lorem-portrait.jpg');
+  background-size: cover;
+  background-position: top;
+  height: 85vh;
+  border-radius: 20px;
+  padding: 20px;
 }
 .greetings {
   font-family: var(--urbanist);
   font-size: 3rem;
   text-align: end;
-  color: var(--white);
-  ;
-}
-.fullname {
-  display: inline-block;
+  color: var(--base);
 }
 .distorted-letter {
   display: inline-block;
-
 }
 .fullname {
-  font-family: var(--wosker);
-  font-size: 15rem;
+  font-family: var(--ortland);
+  font-size: 14rem;
   cursor: default;
-}
-
-.fullname .name{
-  color: transparent;
-  -webkit-text-stroke: 2.5px var(--orange); 
-}
-.fullname .surname{
-  color: var(--orange);
-}
-.hero-image {
-  width: 45%;
-  object-fit: cover;
-  object-position: center 25%;
-  max-height: 80vh;
-  border-radius: 20px;
-}
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  background-color: var(--dark-grey);
-  border-radius: 20px;
-  padding: 20px;
+  color: var(--dark-blue);
 }
 
 /* Navbar */
 
 nav {
-  background-color: var(--dark-grey);
-  margin: 0 20px;
-  border-radius: 0 0 20px 20px;
-  
+  background-color: var(--dark-blue);
+  border-radius: 20px;
+  width: fit-content;
+  margin: 20px auto;
 }
 nav ul {
-  display: flex;
   list-style-type: none;
-  margin: auto;
-  width: 50%;
+  display: flex;
   justify-content: space-around;
   align-items: center;
-  color: var(--white);
+  gap: 50px;
+  margin: auto;
+  padding: 20px 50px;
+  color: var(--base);
   font-size: 1.1rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -115,31 +91,35 @@ nav ul {
 nav ul li {
   cursor: pointer;
   z-index: 4;
-  padding: 20px;
 }
-
+/* Section commons */
+.section-title {
+  font-family: var(--ortland);
+  color: var(--dark-blue);
+  font-size: 8rem;
+  margin-top: 100px;
+  margin-left: 10px;
+}
 /* projects */
-
 .projects {
   margin-top: 20px;
   height: 40vh;
   border-radius: 20px;
-  background-color: var(--dark-grey);
+  background-color: var(--dark-blue);
 }
 
 .projects {
   margin-top: 20px;
   border-radius: 20px;
-  background-color: var(--dark-grey);
+  background-color: var(--dark-blue);
   display: flex;
   flex-direction: column;
   height: fit-content;
   min-height: fit-content;
 }
 .projects .project-card {
-  border-bottom: 2px solid var(--orange);
+  border-bottom: 2px solid var(--base);
   padding: 20px;
-  z-index: 5;
   position: relative;
 }
 .projects .project-card:last-of-type {
@@ -147,34 +127,111 @@ nav ul li {
 }
 
 .projects h3 a{
-  color: var(--orange);
-  font-family: var(--wosker);
+  color: var(--base);
+  font-family: var(--ortland);
   font-weight: normal;
   font-size: 6rem;
   text-decoration: none;
+  transition: color .5s;
 }
-.animate-link {
+.projects h3:hover a{
+  color: var(--accent);
+}
+.scale-link, .move-link {
   display: inline-block; 
 }
 .project-image {
   position: absolute;
   top: -25%;
-  right: 5px;
+  right: 100px;
   max-width: 400px;
-  height: auto;
-  z-index: 5;
-  display: none;
-  opacity: .9;
+  opacity: 0;
+  visibility: hidden;
   border-radius: 10px;
 }
-.project-image.effictio{
-  transform: translateX(-50px);
-}
-.visible {
-  display: block
-}
 
-@media screen and (min-width: 740px) {
+/* About */
+.section-title.about-title {
+  text-align: right;
+  margin-right: 10px;
+}
+.about {
+  background-color: var(--dark-blue);
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  gap: 20px;
+  padding: 20px;
+  height: 60vh;
+}
+.about-elem {
+  border-radius: 10px;
+  overflow: hidden;
+}
+.about-elem img {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.about-elem:nth-of-type(6) img {
+  object-position: center 30%;
+}
+.about-elem video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.about-elem:nth-of-type(1) {
+  grid-column: 1 / 4;
+  grid-row: 1 / -1;
+}
+.about-elem:nth-of-type(2) {
+  grid-column: 4 / 7;
+  grid-row: 1 / span 6;
+}
+.about-elem:nth-of-type(3) {
+  grid-column: 4 / 8;
+  grid-row: 7 / -1;
+}
+.about-elem:nth-of-type(4) {
+  grid-column: 7 / span 2;
+  grid-row: 5 / span 2;
+  display: flex;
+  align-items: center;
+  font-family: var(--ortland);
+  font-size: 2rem;
+  color: var(--base);
+  letter-spacing: 2px;
+}
+.about-elem:nth-of-type(5) {
+  grid-column: auto / span 2;
+  grid-row: auto / span 4;
+}
+.about-elem:nth-of-type(6) {
+  grid-column: 8 / span 3;
+  grid-row: 7 / -1;
+}
+.about-elem:nth-of-type(7) {
+  grid-column: auto / span 2;
+  grid-row: auto / span 6;
+}
+.about-elem:nth-of-type(8) {
+  grid-column: auto / span 2;
+  grid-row: 1 / -1;
+}
+@media screen and (max-width: 1800px) {
+  .fullname {
+    font-size: 12rem;
+  }
+}
+@media screen and (max-width: 1540px) {
+  .fullname {
+    font-size: 10rem;
+  }
+}
+@media screen and (max-width: 1300px) {
   .fullname {
     font-size: 8rem;
   }
