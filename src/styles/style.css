@@ -7,6 +7,7 @@
 :root {
   --base: #C1C1C1;
   --dark-blue: #2C4251;
+  --dark-blue-low-opacity: #2c4251b0;
   --accent: #D16666;
   --urbanist: 'Urbanist', sans-serif;
   --ortland: "Ortland", sans-serif;
@@ -21,7 +22,6 @@ body {
   background-color: var(--base);
 }
 .cursor {
-  position: fixed;
   top: 0;
   left: 0;
   width: 15px;
@@ -30,7 +30,11 @@ body {
   background-color: var(--accent);
   border: 2px solid var(--dark-blue);
   z-index: 3;
+  position: fixed;
+  pointer-events: none; 
+  transition: background-color 0.3s ease;
 }
+
 *::selection {
   background-color: var(--accent);
   color: white;
@@ -38,6 +42,7 @@ body {
 /* Header */
 main {
   margin: 10px;
+  height: 100vh;
 }
 header {
   display: flex;
@@ -47,7 +52,7 @@ header {
   background-image: url('../assets/images/lorem-portrait.jpg');
   background-size: cover;
   background-position: top;
-  height: 85vh;
+  height: 100%;
   border-radius: 20px;
   padding: 20px;
 }
@@ -70,20 +75,27 @@ header {
 /* Navbar */
 
 nav {
-  background-color: var(--dark-blue);
   border-radius: 20px;
   width: fit-content;
-  margin: 20px auto;
+  position: fixed;
+  top: 5%;
+  left: 50%;
+  z-index: 8;
+  transform: translateX(-50%);
+  background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 8px 32px 0 var(--dark-blue-low-opacity);
+  backdrop-filter: blur( 5px );
+  -webkit-backdrop-filter: blur( 5px );
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 nav ul {
   list-style-type: none;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  gap: 50px;
   margin: auto;
-  padding: 20px 50px;
-  color: var(--base);
+  padding: 5px 50px;
+  color: var(--dark-blue);
   font-size: 1.1rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -91,6 +103,8 @@ nav ul {
 nav ul li {
   cursor: pointer;
   z-index: 4;
+  padding: 10px 20px;
+  border-radius: 10px;
 }
 /* Section commons */
 .section-title {
@@ -151,6 +165,7 @@ nav ul li {
 }
 
 /* About */
+
 .section-title.about-title {
   text-align: right;
   margin-right: 10px;
@@ -166,22 +181,28 @@ nav ul li {
   height: 60vh;
 }
 .about-elem {
+  position: relative;
   border-radius: 10px;
   overflow: hidden;
 }
-.about-elem img {
+
+.about-elem img,
+.about-elem video {
   height: 100%;
   width: 100%;
-  border-radius: 10px;
   object-fit: cover;
+  border-radius: 10px;
+  transition: scale .3s;
+}
+.about-elem:hover img,
+.about-elem:hover video {
+  scale: 1.1;
+}
+.about-elem:nth-of-type(2) video{
+  object-position: center 12%;
 }
 .about-elem:nth-of-type(6) img {
   object-position: center 30%;
-}
-.about-elem video {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
 }
 .about-elem:nth-of-type(1) {
   grid-column: 1 / 4;
@@ -221,6 +242,48 @@ nav ul li {
   grid-column: auto / span 2;
   grid-row: 1 / -1;
 }
+
+.about-elem .overlay-infos {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  color: white;
+  font-size: 1.2rem;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.about-elem .overlay-infos span {
+  transform: translateY(30px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.about-elem:hover .overlay-infos {
+  opacity: 1;
+  visibility: visible;
+}
+
+.about-elem:hover .overlay-infos span {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.overlay-infos {
+  text-align: center;
+  font-family: var(--urbanist);
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
 @media screen and (max-width: 1800px) {
   .fullname {
     font-size: 12rem;
