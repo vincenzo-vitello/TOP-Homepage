@@ -5,10 +5,12 @@ import animateName from './gsap/animateName';
 import animateCursor from './gsap/animateCursor';
 import animateNavElements from './gsap/animateNavBar';
 import animateProjectLink from './gsap/animateProjectLink';
+import animateQuote from './gsap/animateQuote';
 
 document.addEventListener('DOMContentLoaded', () => {
   animateName();
   animateCursor();
   animateNavElements();
   animateProjectLink();
+  animateQuote();
 });

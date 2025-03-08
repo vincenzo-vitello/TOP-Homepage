@@ -45,7 +45,7 @@ export default function animateNavElements() {
         scaleY: 0.8,
         duration: 0.3,
         stagger: 0.02,
-        ease: 'power1.out',
+        ease: 'power2.out',
       });
     });
 
@@ -61,7 +61,7 @@ export default function animateNavElements() {
         scaleY: 1,
         duration: 0.3,
         stagger: 0.02,
-        ease: 'power1.out',
+        ease: 'power2.out',
       });
     });
   });
