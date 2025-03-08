@@ -28,7 +28,6 @@ export default function animateProjectLink() {
         });
       }
 
-      // Mostra e scala l'immagine
       gsap.to(projectImage, {
         autoAlpha: 1,
         scale: 1,
