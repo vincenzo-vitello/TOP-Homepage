@@ -7,6 +7,7 @@ import animateNavElements from './gsap/animateNavBar';
 import animateProjectLink from './gsap/animateProjectLink';
 import animateQuote from './gsap/animateQuote';
 import animateContactButton from './gsap/animateContactButton';
+import animateStack from './gsap/animateStack';
 
 document.addEventListener('DOMContentLoaded', () => {
   animateName();
@@ -15,4 +16,5 @@ document.addEventListener('DOMContentLoaded', () => {
   animateProjectLink();
   animateQuote();
   animateContactButton();
+  animateStack();
 });
