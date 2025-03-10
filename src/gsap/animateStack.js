@@ -1,7 +1,8 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import gsap from 'gsap';
 
 export default function animateStack() {
-  const stackImages = document.querySelectorAll('.stack-container img');
+  const stackImages = document.querySelectorAll('.stack-container svg');
 
   stackImages.forEach((img) => {
     img.addEventListener('mouseenter', (event) => {

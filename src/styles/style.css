@@ -105,6 +105,16 @@ nav ul li {
   padding: 10px 20px;
   border-radius: 10px;
 }
+nav ul li:hover {
+  animation: trill .5s ease-in-out infinite alternate;
+}
+@keyframes trill {
+  0% { transform: rotate(2deg) translateX(2px); }
+  25% { transform: rotate(-3deg) translateX(-3px); }
+  50% { transform: rotate(3deg) translateX(3px); }
+  75% { transform: rotate(-2deg) translateX(-2px); }
+  100% { transform: rotate(0deg) translateX(0px); }
+}
 /* Section commons */
 .section-title {
   font-family: var(--ortland);
@@ -162,6 +172,10 @@ nav ul li {
   background-color: var(--dark-blue);
   border-radius: 20px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 50px 0;
 }
 .stack {
   overflow: hidden;
@@ -171,13 +185,23 @@ nav ul li {
   width: 60%;
   margin: auto;
 }
+.stack:nth-of-type(2) {
+  width: 50%;
+}
 .stack-container {
- animation: slide 10s infinite linear;
+ animation: slide 20s infinite linear;
  display: inline-block;
 }
-.stack-container img {
+.stack:nth-of-type(2) .stack-container {
+  animation: slideInvert 20s infinite linear;
+  display: inline-block;
+}
+.stack-container svg, .gsap-icon path{
   width: 6rem;
-  margin-right: 50px;
+  margin-right: 100px;
+}
+.stack-container svg:hover, .gsap-icon:hover path{
+  fill: var(--accent);
 }
 .stack:hover .stack-container {
   animation-play-state: paused;
@@ -188,7 +212,7 @@ nav ul li {
   content: "";
   position: absolute;
   top: 0;
-  width: 250px;
+  width: 150px;
   height: 100%;
   z-index: 999;
 }
@@ -209,7 +233,14 @@ nav ul li {
     transform: translateX(-100%);
   }
 }
-
+@keyframes slideInvert {
+  from {
+    transform: translateX(-100%)
+  }  
+  to {
+    transform: translateX(0);
+  }
+}
 /* About */
 
 .section-title.about-title {

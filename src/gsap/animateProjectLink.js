@@ -16,7 +16,7 @@ export default function animateProjectLink() {
           scaleX: 3,
           x: 50,
           duration: 0.5,
-          ease: 'elastic.out(1,0.3)',
+          ease: 'power2.out',
         });
       }
 
@@ -24,7 +24,7 @@ export default function animateProjectLink() {
         gsap.to(moveLetters, {
           x: 100,
           duration: 0.5,
-          ease: 'elastic.out(1,0.3)',
+          ease: 'power2.out',
         });
       }
 
@@ -57,7 +57,7 @@ export default function animateProjectLink() {
             scaleX: 1,
             x: 0,
             duration: 0.5,
-            ease: 'elastic.out(1,0.3)',
+            ease: 'power2.out',
           });
         }
 
@@ -65,7 +65,7 @@ export default function animateProjectLink() {
           gsap.to(moveLetters, {
             x: 0,
             duration: 0.5,
-            ease: 'elastic.out(1,0.3)',
+            ease: 'power2.out',
           });
         }
 
