@@ -12,6 +12,7 @@
   --urbanist: 'Urbanist', sans-serif;
   --ortland: "Ortland", sans-serif;
 }
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -20,6 +21,8 @@
 body {
   font-family: var(--urbanist);
   background-color: var(--base);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 .cursor {
   top: 0;
@@ -54,12 +57,24 @@ header {
   height: 100vh;
   border-radius: 20px;
   padding: 20px;
+  position: relative;
+}
+header::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  content: "";
+  border-radius: 20px;
 }
 .greetings {
   font-family: var(--urbanist);
   font-size: 3rem;
   text-align: end;
   color: var(--base);
+  z-index: 1;
 }
 .distorted-letter {
   display: inline-block;
@@ -80,7 +95,6 @@ nav {
   left: 50%;
   transform: translateX(-50%);
   z-index: 8;
-  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -91,7 +105,6 @@ nav {
   justify-content: center;
   align-items: center;
   gap: 20px;
-  
   list-style-type: none;
   margin: 0 auto;
   color: var(--dark-blue);
@@ -104,6 +117,12 @@ nav {
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.18);
+}
+nav a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none; /* Rimuove la sottolineatura */
 }
 nav ul {
   padding: 10px 20px;
@@ -202,27 +221,21 @@ nav ul li:hover {
   display: flex;
   flex-direction: column;
   gap: 50px;
-  padding: 50px 0;
 }
 .stack {
   overflow: hidden;
-  padding: 20px 60px;
+  padding: 20px;
   white-space: nowrap;
   position: relative;
-  width: 60%;
+  width: 100%;
   margin: auto;
 }
-.stack:nth-of-type(2) {
-  width: 50%;
-}
+
 .stack-container {
  animation: slide 20s infinite linear;
  display: inline-block;
 }
-.stack:nth-of-type(2) .stack-container {
-  animation: slideInvert 20s infinite linear;
-  display: inline-block;
-}
+
 .stack-container svg, .gsap-icon path{
   width: 6rem;
   margin-right: 100px;
@@ -239,9 +252,9 @@ nav ul li:hover {
   content: "";
   position: absolute;
   top: 0;
-  width: 150px;
+  width: 250px;
   height: 100%;
-  z-index: 999;
+  z-index: 2;
 }
 .stack::before {
   left: 0;
@@ -260,14 +273,7 @@ nav ul li:hover {
     transform: translateX(-100%);
   }
 }
-@keyframes slideInvert {
-  from {
-    transform: translateX(-100%)
-  }  
-  to {
-    transform: translateX(0);
-  }
-}
+
 /* About */
 
 .section-title.about-title {
@@ -354,7 +360,7 @@ nav ul li:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7); 
+  background-color: var(--accent); 
   display: flex;
   align-items: center; 
   justify-content: center; 
@@ -402,7 +408,7 @@ nav ul li:hover {
   justify-content: center;
 }
 .button-container {
-  height: 20rem;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -410,21 +416,19 @@ nav ul li:hover {
 }
 .contact-btn {
   background-color: var(--dark-blue);
-  padding: 20px 50px;
   border: none;
   color: var(--base);
   font-size: 1.5rem;
-  border-radius: 20px;
   cursor: pointer;
   transition: background-color 0.3s, width 0.3s, height 0.3s, border-radius 0.3s;
   display: inline-block; 
+  width: 30rem;
+  height: 30rem; 
+  border-radius: 50%; 
 }
 .contact-btn:hover {
   background-color: var(--accent);
-  width: 20rem;
-  height: 20rem; 
-  border-radius: 50%; 
-  padding: 0; 
+  
   position: absolute; 
 }
 .contact-btn a {
@@ -432,9 +436,23 @@ nav ul li:hover {
   color: inherit;
   font-size: 3rem;
 }
+
+/* CTA */
+
+.call-to-action {
+  width: 300vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  font-size: 20rem;
+  color: var(--dark-blue);
+  font-family: var(--ortland);
+  padding-left: 5vw;
+}
 /* footer */
 footer {
-  height: 30vh;
+  height: 20vh;
   background-color: var(--dark-blue);
   margin: 0 10px;
   border-radius: 20px 20px 0 0;

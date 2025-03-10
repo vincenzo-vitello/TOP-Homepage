@@ -15,17 +15,17 @@ export default function animateContactButton() {
     const mousePosX = e.clientX - boundingRect.left;
     const mousePosY = e.clientY - boundingRect.top;
 
-    const moveX = (mousePosX - boundingRect.width / 2) * 0.3;
-    const moveY = (mousePosY - boundingRect.height / 2) * 0.3;
+    const moveX = (mousePosX - boundingRect.width / 2) * 0.6;
+    const moveY = (mousePosY - boundingRect.height / 2) * 0.6;
 
-    const maxMove = 20;
+    const maxMove = 40;
     const limitedMoveX = Math.min(Math.max(moveX, -maxMove), maxMove);
     const limitedMoveY = Math.min(Math.max(moveY, -maxMove), maxMove);
 
     gsap.to(button, {
       x: limitedMoveX,
       y: limitedMoveY,
-      duration: 0.8,
+      duration: 0.4,
       ease: 'power2.out',
     });
   });
@@ -34,8 +34,8 @@ export default function animateContactButton() {
     gsap.to(button, {
       x: 0,
       y: 0,
-      duration: 0.8,
-      ease: 'elastic.out(1,0.3)',
+      duration: 1.2,
+      ease: 'elastic.out(1.2, 0.4)',
     });
   });
 }
