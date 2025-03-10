@@ -9,6 +9,7 @@ import animateQuote from './gsap/animateQuote';
 import animateContactButton from './gsap/animateContactButton';
 import animateStack from './gsap/animateStack';
 import animateCta from './gsap/animateCta';
+import animateLoader from './gsap/animateLoader';
 
 document.addEventListener('DOMContentLoaded', () => {
   animateName();
@@ -19,4 +20,5 @@ document.addEventListener('DOMContentLoaded', () => {
   animateContactButton();
   animateStack();
   animateCta();
+  animateLoader();
 });
